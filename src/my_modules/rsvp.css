@@ -1,0 +1,104 @@
+.RSVPApp.mask {
+  width: 90%;
+  max-width: 800px;
+  margin: 0px auto;
+  height: 100%;
+  justify-content: flex-start;
+  overflow-y: auto; }
+
+.RSVPApp input {
+  color: black; }
+
+.RSVPApp .success, .RSVPApp .errors {
+  margin: 0px;
+  padding-left: 20px;
+  padding-right: 10px; }
+
+.RSVPApp .errors {
+  color: red; }
+
+.RSVPApp .mask.flex {
+  align-items: center; }
+
+.RSVPApp .form-style {
+  max-width: 400px;
+  margin: 0px auto; }
+  .RSVPApp .form-style ul {
+    list-style: none;
+    padding: 0; }
+  .RSVPApp .form-style li:not(.radio) {
+    display: block;
+    padding: 9px;
+    border: 1px solid #000000;
+    margin-bottom: 30px;
+    border-radius: 3px; }
+    .RSVPApp .form-style li:not(.radio) > label {
+      display: block;
+      float: left;
+      margin-top: -19px;
+      height: 1rem;
+      padding: 2px 5px;
+      color: #B9B9B9;
+      font-size: 14px;
+      overflow: hidden; }
+  .RSVPApp .form-style li.guest {
+    border: 5px solid rgba(255, 255, 255, 0.1); }
+  .RSVPApp .form-style li.submit {
+    border: none;
+    margin: 0px; }
+  .RSVPApp .form-style li.radio {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0; }
+    .RSVPApp .form-style li.radio :first-child {
+      width: 100%;
+      margin: 5px auto; }
+    .RSVPApp .form-style li.radio label {
+      padding: 10px; }
+    .RSVPApp .form-style li.radio input:nth-of-type(2) {
+      margin-left: 20px; }
+  .RSVPApp .form-style input[type="text"] {
+    width: 100%;
+    display: block;
+    border: none;
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    padding: 0 0 0 5px; }
+  .RSVPApp .form-style input[type="submit"] {
+    margin: 0 auto;
+    display: block;
+    color: white; }
+
+.RSVPApp #dump {
+  width: 300px; }
+
+.RSVPApp #dump > ul > li > div {
+  width: 100%; }
+
+.RSVPApp .groupName {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center; }
+  .RSVPApp .groupName h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+    width: 100%;
+    margin: 0; }
+  .RSVPApp .groupName h3 + button {
+    display: block;
+    max-height: 2.5rem; }
+
+@media only screen and (min-width: 500px) {
+  .RSVPApp #dump {
+    width: 400px; }
+  .RSVPApp h3.groupName {
+    width: auto;
+    min-width: 250px; } }

@@ -1,0 +1,129 @@
+openapi: "3.0.0"
+info:
+  version: 0.0.1
+  title: RSVP App
+  license:
+    name: MIT
+servers:
+  - url: http://locahost:8080/
+paths:
+  /events:
+    get:
+      summary: Instructions on how to create an event etc.
+      operationId: userInstructions
+  /events/{eventId}:
+    get:
+      summary: Details for a specific event
+      operationId: showEvent
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          description: The id of the event to retrieve
+          schema:
+            type: string
+
+  /events/{eventId}/guests:
+    parameters:
+      - name: eventId
+        in: path
+        required: true
+        description: The id of the event to retrieve
+        schema:
+          type: string
+    get:
+      summary: All guests for an event 
+      operationId: showGuests
+    post:
+      summary: Add new guest to the event
+      operationId: AddGuest
+      
+  /events/{eventId}/guests/{guestId}:
+    parameters:
+    - name: eventId
+      in: path
+      required: true
+      description: The id of the event to retrieve
+      schema:
+        type: string
+    - name: guestId
+      in: path
+      required: true
+      description: the id of the guest
+      schema:
+        type: string
+    
+    get:
+      summary: get details for specified guest
+      operationId: showGuest
+      responses:
+        '200':
+          description: Details For Guest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guest'
+        default:
+          $ref: "#/responses/Unexpected"
+    put:
+      summary: update details for specified guest
+      operationId: updateGuest
+      responses:
+        '200':
+          description: Updated Guest
+        default:
+          $ref: "#/responses/Unexpected"
+    delete:
+      summary: delete specified guest
+      operationId: reomveGuest
+      responses:
+        '200':
+          description: Removed Guest
+        default:
+          $ref: "#/responses/Unexpected"
+
+components:
+  schemas:
+    Guest:
+      required:
+        - id
+        - fname
+        - lname
+        - status
+      properties:
+        id:
+          type: integer
+        fname:
+          type: string
+        lname:
+          type: string
+        status:
+          type: integer
+
+    Guests:
+      type: array
+      items:
+        $ref: "#/components/schemas/Guest"
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+responses:
+  NotFound:
+    description: The specified resource was not found
+    schema:
+      $ref: "#/components/schemas/Error"
+  Unauthorized:
+    description: Unauthorized
+    schema:
+      $ref: "#/components/schemas/Error"
+  Unexpected:
+    description: Unexpected error
+    schema:
+      $ref: "#/components/schemas/Error"
